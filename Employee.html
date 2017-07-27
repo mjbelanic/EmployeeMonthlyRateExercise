@@ -102,14 +102,16 @@
 
 
   $("#submitBtn").on("click", function(){
-
+  		// Ensures no other events caused by button are run
   		event.preventDefault();
 
+  		// Get the values from input fields
   		name = $("#nameSubmit").val().trim();
   		role = $("#roleSubmit").val().trim();
   		startDate = $("#startDateSubmit").val().trim();
   		monthlyRate = $("#monthlyRateSubmit").val().trim();
 
+  		//push to database reference
   		database.ref().push({
   			name: name,
         	role: role,
@@ -121,21 +123,27 @@
 
   	// Needs to be child_added; if this is left to value error will occur;
    database.ref().on("child_added", function(snapshot) {
+    //Snapshot values
     name = snapshot.val().name;
     role = snapshot.val().role;
     startDate = snapshot.val().startDate;
     monthlyRate = snapshot.val().monthlyRate;
+    
+    // create a new table row in our table
     row = $("<tr>");
     $("#firebaseContent").append(row);
     tableName = $("<td>");
     tableRole = $("<td>");
     tableSDate = $("<td>");
     tableMRate = $("<td>");
+
+    //Append the <td> we just made to the <tr>
     row.append(tableName);
     row.append(tableRole);
     row.append(tableSDate);
     row.append(tableMRate);
 
+    //This inputs the snapshot values into the table cells
     tableName.html(snapshot.val().name);
     tableRole.html(snapshot.val().role);
     tableSDate.html(snapshot.val().startDate);
