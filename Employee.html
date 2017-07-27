@@ -31,8 +31,8 @@
 									<th>Employee Name</th>
 									<th>Role</th>
 									<th>Start Date</th>
-									<th>Months Worked</th>
 									<th> Monthly Rate</th>
+									<th>Months Worked</th>
 									<th>Total Billed</th>
 								</tr>
 							</thead>
@@ -128,22 +128,18 @@
     row = $("<tr>");
     $("#firebaseContent").append(row);
     tableName = $("<td>");
-    tableName.attr("id" , "name");
     tableRole = $("<td>");
-    tableRole.attr("id" , "role");
     tableSDate = $("<td>");
-    tableSDate.attr("id", "sDate");
     tableMRate = $("<td>");
-    tableMRate.attr("id", "mRate");
-    $("#firebaseContent").append(tableName);
-    $("#firebaseContent").append(tableRole);
-    $("#firebaseContent").append(tableSDate);
-    $("#firebaseContent").append(tableMRate);
+    row.append(tableName);
+    row.append(tableRole);
+    row.append(tableSDate);
+    row.append(tableMRate);
 
-    $("#name").html(name);
-    $("#role").html(role);
-    $("#sDate").html(startDate);
-    $("#mRate").html(monthlyRate);
+    tableName.html(snapshot.val().name);
+    tableRole.html(snapshot.val().role);
+    tableSDate.html(snapshot.val().startDate);
+    tableMRate.html(snapshot.val().monthlyRate);
   } , function(error){
     console.log(error);
   });
