@@ -1,0 +1,98 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Employee Data Management</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="text-center">Employee Data Management</h1>
+		</div>
+		
+		<!--PANEL 1-->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Current Employees</h3>
+					</div>
+					<div class="panel-body">
+						<!--Add content from firebase here-->
+						<div id="firebaseContent">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--PANEL 2-->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Add Employee</h3>
+					</div>
+					<div class="panel-body">
+						<!--FORM inside PANEL -->
+						<form role="form">
+							<div class="form-group">
+								<label for="nameSubmit">Employee Name</label>
+								<input class="form-control" type="text" id="nameSubmit">
+							</div>
+							<div class="form-group">
+								<label for="destinationSbumit">Role</label>
+								<input class="form-control" type="text" id="roleSubmit">
+							</div>
+							<div class="form-group">
+								<label for="timeSubmit">Start Date (DD/MM/YYYY - ex: 01/01/89)</label>
+								<input class="form-control" type="text" id="startDateSubmit">
+							</div>
+							<div class="form-group">
+								<label for="frequencySubmit"> Monthly Rate</label>
+								<input class="form-control" type="number" id="monthlyRateSubmit">
+							</div>
+								<button class="btn" type="submit" id="submitBtn">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>			
+		</div>
+
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBhZnamNtZd1w8xeiJGG1cL8zxG6bLKqcA",
+    authDomain: "inclasswork-b0939.firebaseapp.com",
+    databaseURL: "https://inclasswork-b0939.firebaseio.com",
+    projectId: "inclasswork-b0939",
+    storageBucket: "inclasswork-b0939.appspot.com",
+    messagingSenderId: "1028792066513"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  var name ="";
+  var role = "";
+  var startDate = "";
+  var monthlyRate = 0;
+
+
+  $("#submitBtn").on("click", function(){
+
+  		event.preventDefault();
+  		
+  		name = $("#nameSubmit");
+  		role = $("#roleSubmit")
+  		startDate = $("#startDateSubmit");
+  		monthlyRate = $("#monthlyRateSubmit");
+
+  });
+
+
+</script>
+</body>
+</html>
